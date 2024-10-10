@@ -7,6 +7,7 @@ apply plugin: "com.facebook.react"
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 react {
+    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
     /* Folders */
     //   The root of your project, i.e. where "package.json" lives. Default is '../..'
     // root = file("../../")
@@ -106,10 +107,17 @@ android {
         }
     }
 }
+project.ext.vectoricons = [
+        iconFontNames: [ 'Ionicons.ttf', 'FontAwesome5.ttf', 'MaterialCommunityIcons.ttf' ] // Adicione outros nomes de fontes aqui, se necessário
+]
+
+
+
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation project(':react-native-vector-icons')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
